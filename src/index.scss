@@ -1,14 +1,16 @@
-
-
 body {
-  font-family: 'Inter';
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  //font-family: -apple-system, "Inter", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  //  "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #e7f6ff;
   padding: 85px;
+}
+
+* {
+  font-family: "Inter" system-ui;
+  margin: 0;
 }
 
 ul,
@@ -17,10 +19,10 @@ ol {
   list-style: none;
 }
 
-header{
+header {
   padding: 45px;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .wrapper {
@@ -37,109 +39,285 @@ header{
   p {
     margin: 0;
   }
-  p{
-font-family: 'Inter';
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-color: #9D9D9D;
-//letter-spacing: 0.08em;
+  p {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9d9d9d;
+    //letter-spacing: 0.08em;
   }
   h3 {
-font-family: 'Inter';
-font-weight: 700;
-font-size: 20px;
-line-height: 24px;
-text-transform: uppercase;
-color: #000000;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #000000;
   }
   img {
     margin-right: 16px;
   }
 }
 
-.Menu{
-  ul{
+.Menu {
+  ul {
     display: flex;
     gap: 30px;
     justify-content: center;
-    span{
+    span {
       margin-left: 10px;
       text-align: top;
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-color: #5C5C5C;
-
-
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      color: #5c5c5c;
     }
-    li{
+    li {
       display: flex;
       align-items: center;
     }
   }
 }
 
-.Content{
+.Content {
   margin: 0 auto;
   padding: 0 60px;
 }
-.Card{
-  gap: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+.Card {
+  position: relative;
   padding: 30px;
   max-width: 150px;
   max-height: 260px;
   background: #ffffff;
-border: 1px solid #F3F3F3;
-border-radius: 40px;
-  img{
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+  }
+  img {
     width: 133px;
     height: 112px;
   }
-  p{
-    margin: 0;
-font-size: 13px;
-line-height: 17px;
-color: #000000;
+  .like {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    cursor: pointer;
+    top: 30;
+    left: 30;
   }
-  span, b {
+  p {
+    margin: 14px 0;
+    font-size: 13px;
+    line-height: 17px;
+    color: #000000;
+  }
+  span,
+  b {
     display: block;
   }
-  b{
-font-weight: 700;
-font-size: 14px;
-line-height: 17px;
-color: #000000;
+  b {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
   }
-  span{
-font-weight: 500;
-font-size: 11px;
-line-height: 13px;
-text-transform: uppercase;
-color: #BDBDBD;
+  span {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #bdbdbd;
   }
 
-  .cardPrises{
+  .cardPrises {
     gap: 39px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  button{
+  button {
     border: #ffffff;
     background-color: #ffffff;
     cursor: pointer;
   }
 }
 
-.WrapperCard{
+.WrapperCard {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   flex: 0 0 25%;
+}
+
+.Search {
+  max-width: 250px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  input {
+    border: none;
+    padding: 13px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}
+
+.titleAndSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin: 30px 0 40px 0;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  .buy {
+    flex: 1 0 auto;
+    overflow: auto;
+  }
+  .itemAll{
+    overflow: auto;
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 325px;
+    background-color: #ffffff;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    padding: 30px;
+    .titleBuy {
+      font-family: "Inter";
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .cartItem {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .imgItem {
+      display: block;
+      width: 70px;
+      height: 70px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 8px;
+      color: #000000;
+    }
+  }
+  button {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.1s ease;
+    img {
+      padding: 10px;
+      height: 11px;
+      width: 11px;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .itemInfo {
+    margin: 0 10px 0 20px;
+  }
+  .resultsBuy {
+    li {
+      margin: 19px 0;
+      display: flex;
+      //  align-items: center;
+      div {
+        position: relative;
+        flex: 1 0 auto;
+        text-decoration: dashed;
+        border-bottom: dashed #dfdfdf 1px;
+      }
+      span {
+        font-size: 16px;
+        line-height: 19px;
+      }
+      b {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+    button {
+      background: #9dd558;
+      border-radius: 18px;
+      display: block;
+      width: 100%;
+      opacity: 1;
+      color: #ffffff;
+      padding: 18px;
+      height: 55px;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background-color: #789b4d;
+        transform: translateY(-3px);
+        span {
+          &::after {
+            animation: moveArrow 1s infinite;
+          }
+        }
+      }
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        position: relative;
+        @keyframes moveArrow {
+          0% {
+            right: -75px;
+          }
+          50% {
+            right: -55px;
+          }
+          100% {
+            right: -75px;
+          }
+        }
+        &::after {
+          top: 3px;
+          content: "";
+          right: -75px;
+          position: absolute;
+          background: url(../public/img/ArrBtn.svg) no-repeat;
+          width: 20px;
+          height: 13px;
+        }
+      }
+    }
+  }
 }
