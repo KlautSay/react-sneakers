@@ -1,0 +1,144 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  .buy {
+    flex: 1 0 auto;
+    overflow: auto;
+    padding: 30px;
+  }
+  .itemAll {
+    overflow: auto;
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 325px;
+    background-color: #ffffff;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    .titleBuy {
+      font-family: "Inter";
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .cartItem {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .imgItem {
+      display: block;
+      width: 70px;
+      height: 70px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 8px;
+      color: #000000;
+    }
+  }
+  button {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.1s ease;
+    img {
+      padding: 10px;
+      height: 11px;
+      width: 11px;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .itemInfo {
+    margin: 0 10px 0 20px;
+  }
+  .resultsBuy {
+    padding: 30px;
+    li {
+      margin: 19px 0;
+      display: flex;
+      //  align-items: center;
+      div {
+        position: relative;
+        flex: 1 0 auto;
+        text-decoration: dashed;
+        border-bottom: dashed #dfdfdf 1px;
+      }
+      span {
+        font-size: 16px;
+        line-height: 19px;
+      }
+      b {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+    button {
+      background: #9dd558;
+      border-radius: 18px;
+      display: block;
+      width: 100%;
+      opacity: 1;
+      color: #ffffff;
+      padding: 18px;
+      height: 55px;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background-color: #789b4d;
+        transform: translateY(-3px);
+        span {
+          &::after {
+            animation: moveArrow 1s infinite;
+          }
+        }
+      }
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        position: relative;
+        @keyframes moveArrow {
+          0% {
+            right: -50px;
+          }
+          50% {
+            right: -35px;
+          }
+          100% {
+            right: -50px;
+          }
+        }
+        &::after {
+          top: 3px;
+          content: "";
+          right: -50px;
+          position: absolute;
+          background: url(../../../public/img/ArrBtn.svg) no-repeat;
+          width: 20px;
+          height: 13px;
+        }
+      }
+    }
+  }
+}

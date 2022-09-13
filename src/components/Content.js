@@ -1,38 +1,19 @@
-import Item from "./Item";
+import Item from "./Item/index";
+import React from "react"
 
-const itemInfo = [
-            {
-                imageSrc: "img/sneakers1.jpg",
-                description: "Мужские Кроссовки Nike Blazer Mid Suede",
-                price: "12 999"
-            },
-            {
-                imageSrc: "img/sneakers2.jpg",
-                description: "Мужские Кроссовки Nike Air Max 270",
-                price: "12 999"
-            },
-            {
-                imageSrc: "img/sneakers3.jpg",
-                description: "Мужские Кроссовки Nike Blazer Mid Suede",
-                price: "8 499"
-            },
-            {
-                imageSrc: "img/sneakers4.jpg",
-                description: "Кроссовки Puma X Aka Boku Future Rider",
-                price: "8 999"
-            },
-            {
-                imageSrc: "img/sneakers5.jpg",
-                description: "Мужские Кроссовки Under Armour Curry 8",
-                price: "15 199"
-            },
-            {
-                imageSrc: "img/sneakers6.jpg",
-                description: "Мужские Кроссовки Nike Kyrie 7",
-                price: "11 299"
-            },
-        ];
+
 function Content() {
+
+  const [items, setItems] = React.useState([])
+  const [itemsCart, setItemsCart] = React.useState([]);
+  React.useEffect(() => {fetch ("https://631f8afa22cefb1edc4e1de8.mockapi.io/items")
+    .then((res)=>res.json())
+    .then((json)=>{setItems(json)})},[])
+
+  const addToCart = (product) => {
+    setItemsCart([...itemsCart,product])
+  }
+  console.log(itemsCart)
   return (
     <div className="Content">
       <div className="titleAndSearch">
@@ -43,7 +24,7 @@ function Content() {
         </div>
       </div>
       <div className="WrapperCard">
-        {itemInfo.map((obj) => (<Item imageSrc={obj.imageSrc} description={obj.description} price={obj.price} obj={obj}/>))}
+        {items.map((obj) => (<Item imageSrc={obj.imageSrc} description={obj.description} price={obj.price} addItemInCart={(product)=>addToCart(product)} />))}
       </div>
     </div>
   );
