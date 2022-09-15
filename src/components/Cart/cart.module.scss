@@ -11,14 +11,15 @@
     overflow: auto;
     padding: 30px;
   }
-  .itemAll {
+  .buyItem{
     overflow: auto;
   }
+
   .drawer {
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 325px;
+    width: 385px;
     background-color: #ffffff;
     height: 100%;
     right: 0;

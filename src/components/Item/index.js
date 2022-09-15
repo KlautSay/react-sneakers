@@ -2,26 +2,23 @@ import style from "./Item.module.scss"
 import React from "react"
 
 
-function Item({imageSrc, description, price, addItemInCart}) {
+function Item({imageSrc,description,price,addToCart}) {
 
-  const [addCart,setAddCart] = React.useState(false)
 
-  const [follow,setFollow] = React.useState(false)
-
-  const clickToCart = () => {
-    addItemInCart({imageSrc, description, price})
-    setAddCart(!addCart)
-  }
-
+  const [follow, setFollow] = React.useState(false)
   const clickFollow = () => {
     setFollow(!follow)
   }
 
-
+  const [ clickAdd, setClickAdd] = React.useState(false);
+  const clickAddCart = () => {
+    setClickAdd(!clickAdd);
+    addToCart({imageSrc,description,price});
+  }
 
   return (
     <div className={style.Item}>
-      <img className={style.like} src={follow ? "/img/heardLiked.svg" : "/img/like.svg" } alt="like" onClick={clickFollow} />
+      <img className={style.like} src={ follow ? "./img/liked.svg" : "./img/unLike.svg"} onClick={clickFollow}  alt="like"  />
       <img src={imageSrc} alt="sneakers" />
       <p>{description}</p>
       <div className={style.cardPrises}>
@@ -29,7 +26,7 @@ function Item({imageSrc, description, price, addItemInCart}) {
           <span>Цена:</span>
           <b>{price} руб.</b>
         </div>
-        <img className={style.plus} src={addCart ? "/img/btnCheked.svg" : "/img/btnPlus.svg"} onClick={clickToCart}  alt="btnCheked" />
+        <img className={style.plus} src={ clickAdd ? "./img/btnChecked.svg" : "./img/btnPlus.svg"} onClick={clickAddCart}   alt="btnChecked"/>
       </div>
     </div>
   );
