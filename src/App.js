@@ -1,30 +1,42 @@
 import React from 'react';
 import Header from "./components/Header";
 import Content from "./components/Content";
-
+import axios from 'axios';
 
 
 function App() {
-  
+ 
+  const [cart, setCart] = React.useState(false)
+  const clickCart = () => {
+    setCart(!cart)
+  }
+
+React.useEffect(() => {
+  axios.get("https://631f8afa22cefb1edc4e1de8.mockapi.io/items").then((obj) => setItems(obj.data));
+},[])
+
+
 const [items, setItems] = React.useState([])
-
-const object = () => {
-  fetch("https://631f8afa22cefb1edc4e1de8.mockapi.io/items")
-  .then(res => res.json())
-  .then(item => setItems(item))
-}
-
-React.useEffect(object,[])
-
 const [itemsCart, setItemsCart] = React.useState([])
-const addToCart = (obj) => {
-  setItemsCart([...itemsCart,obj]);
+
+React.useEffect(() => {
+  axios.get("https://631f8afa22cefb1edc4e1de8.mockapi.io/cart").then((obj) => setItemsCart(obj.data));
+},[])
+
+const removeItemsToCart = (id) => {
+  axios.delete(`https://631f8afa22cefb1edc4e1de8.mockapi.io/cart/${id}`);
+  setItemsCart((prev)=> prev.filter(items=>items.id!==id))
 }
-console.log(itemsCart);
+
+const addToCart = (obj) => {
+  axios.post("https://631f8afa22cefb1edc4e1de8.mockapi.io/cart",obj)
+  setItemsCart([...itemsCart,obj])
+  setTimeout(()=>{axios.get("https://631f8afa22cefb1edc4e1de8.mockapi.io/cart").then((obj) => setItemsCart(obj.data))},2000)
+}
   return (
     <div className="wrapper">
-      <Header itemsCart={itemsCart}/>
-      <Content items= {items} addToCart={addToCart}/>
+      <Header itemsCart={itemsCart} clickCart={clickCart} cart={cart} removeItemsToCart={removeItemsToCart}/>
+      <Content items= {items} addToCart={addToCart} />
     </div>
   );
 }

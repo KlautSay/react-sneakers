@@ -9,7 +9,7 @@ body {
 }
 
 * {
-  font-family: "Inter" system-ui;
+  font-family: "Inter" system-ui, sans-serif;
   margin: 0;
 }
 
@@ -96,16 +96,28 @@ header {
 }
 
 .Search {
+  position: relative;
   max-width: 250px;
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  :hover{
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.1);
+  }
   input {
     border: none;
-    padding: 13px;
+    padding: 13px 40px 13px 40px;
     font-size: 16px;
     border-radius: 10px;
+  }
+  .searchIcon{
+    position: absolute;
+    left: 5px;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    padding: 10px;
   }
 }
 
@@ -116,5 +128,16 @@ header {
   h1 {
     margin: 30px 0 40px 0;
   }
+
+}
+
+.ClearSearch{
+  position: absolute;
+  padding: 12px;
+  width: 10px;
+  height: 10px;
+  right: -20px;
+  top: 5px;
+  background-color: #ffffff;
 }
 

@@ -1,12 +1,7 @@
 import React from 'react';
 import Cart from './Cart/index';
 
-function Header({itemsCart}) {
-
-  const [cart, setCart] = React.useState(false)
-  const clickCart = () => {
-    setCart(!cart)
-  }
+function Header({itemsCart,clickCart,cart,removeItemsToCart}) {
 
   const [priceSum, setPriceSum] = React.useState(0);
 
@@ -15,11 +10,11 @@ function Header({itemsCart}) {
     setPriceSum(itemsCart.map(obj=>obj.price).reduce((sum, prev) => sum+prev,0))
   }
   React.useEffect(sumPrice,)
-  console.log(sumPrice)
+
 
   return (
     <header>
-      {cart && <Cart itemsCart={itemsCart} clickCart={clickCart} priceSum={priceSum} />}
+      {cart && <Cart itemsCart={itemsCart} clickCart={clickCart} priceSum={priceSum} removeItemsToCart={removeItemsToCart} />}
         <div className="logo">
           <img width={40} height={40} src="/img/Logo.png" alt="ImageLogo" />
           <div>
@@ -59,7 +54,7 @@ function Header({itemsCart}) {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span> {priceSum} руб.</span>
+              {priceSum > 0 ? <span> {priceSum} руб.</span> : null}
             </li>
             <li>
               <svg

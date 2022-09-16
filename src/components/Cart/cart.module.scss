@@ -7,11 +7,11 @@
   height: 100%;
   z-index: 2;
   .buy {
-    flex: 1 0 auto;
     overflow: auto;
     padding: 30px;
   }
-  .buyItem{
+  .buyItem {
+    flex: 1 0 auto;
     overflow: auto;
   }
 
@@ -135,6 +135,73 @@
           content: "";
           right: -50px;
           position: absolute;
+          background: url(../../../public/img/ArrBtn.svg) no-repeat;
+          width: 20px;
+          height: 13px;
+        }
+      }
+    }
+  }
+  .EmptyCart {
+    text-align: center;
+    padding: 50px;
+    h3 {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 27px;
+      padding: 20px 0 10px 0;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      padding-bottom: 40px;
+      /* or 150% */
+
+      text-align: center;
+    }
+    button {
+      background: #9dd558;
+      border-radius: 18px;
+      display: block;
+      width: 100%;
+      opacity: 1;
+      color: #ffffff;
+      padding: 18px;
+      height: 55px;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background-color: #789b4d;
+        transform: translateY(-3px);
+        span {
+          &::after {
+            animation: moveArrow 1s infinite;
+          }
+        }
+      }
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        position: relative;
+        @keyframes moveArrow {
+          0% {
+            left: -50px;
+          }
+          50% {
+            left: -35px;
+          }
+          100% {
+            left: -50px;
+          }
+        }
+        &::after {
+          top: 3px;
+          content: "";
+          left: -50px;
+          position: absolute;
+          transform: rotate(180deg);
           background: url(../../../public/img/ArrBtn.svg) no-repeat;
           width: 20px;
           height: 13px;
